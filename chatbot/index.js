@@ -4,8 +4,15 @@ const diaglogflow = require('dialogflow');
 const structjson = require('structjson');
 const config = require('../config/keys');
 
+const projectID = config.googleProjectID;
+
+const credentials = {
+    client_email: config.googleClientEmail,
+    private_key: config.googlePrivateKey
+}
+
 // Create a new session
-const sessionClient = new diaglogflow.SessionsClient();
+const sessionClient = new diaglogflow.SessionsClient({projectID: projectID, credentials: credentials});
 const sessionPath = sessionClient.sessionPath(config.googleProjectID, config.dialogFlowSessionID);
 
 module.exports = {
