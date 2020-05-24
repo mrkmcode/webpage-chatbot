@@ -46,7 +46,11 @@ class Chatbot extends Component {
             this.setState({messages: [...this.state.messages, says]});
         }
     }
-        
+    
+    componentDidMount() {
+        this.df_event_query('Welcome');
+    }
+
     renderMessages(stateMessages) {
         if (stateMessages) {
             return stateMessages.map((message, i) => {
